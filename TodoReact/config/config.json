@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "todo-react-wp-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/todoReactWp/TodoReactWpWebPart.js",
+          "manifest": "./src/webparts/todoReactWp/TodoReactWpWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "TodoReactWpWebPartStrings": "lib/webparts/todoReactWp/loc/{locale}.js"
+  }
+}
