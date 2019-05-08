@@ -33,18 +33,18 @@ export default class ReactSessionWp extends React.Component<IReactSessionWpProps
         <div className="ms-Grid-row">
           <SessionList
             sessionItems={this.state.sessionItems}
-            handleDelete={this._DeleteItem}
+            handleDelete={this._deleteItem}
           />
         </div>
         <div className="ms-Grid-row">
-          <Form handleAddItem={this._AddItem} />
+          <Form handleAddItem={this._addItem} />
         </div>
       </div>
     );
   }
 
   @autobind
-  private async _RetrieveItems() {
+  private async _retrieveItems() {
     this.props.httpClient.get("https://spsdohaapi.azurewebsites.net/api/values", HttpClient.configurations.v1)
       .then((data: HttpClientResponse) => data.json())
       .then((data: any) => {
@@ -55,14 +55,14 @@ export default class ReactSessionWp extends React.Component<IReactSessionWpProps
   }
 
   @autobind
-  private _AddItem(session: ISession) {
+  private _addItem(session: ISession) {
     var sessionItems = this.state.sessionItems;
     sessionItems.push(session);
     this.setState({ sessionItems: sessionItems });
   }
 
   @autobind
-  private _DeleteItem(session: ISession) {
+  private _deleteItem(session: ISession) {
     this.setState(prevState => ({
       sessionItems: prevState.sessionItems.filter(el => el.title != session.title && el.speaker != session.title)
     }));
