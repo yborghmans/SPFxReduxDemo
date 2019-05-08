@@ -25,7 +25,7 @@
     ]
   },
   "include": [
-    "src/**/*.ts", "src/webparts/todoReactWp/components/Form/Form.tsx"
+    "src/**/*.ts"
   ],
   "exclude": [
     "node_modules",

@@ -1,20 +1,19 @@
 import * as React from 'react';
-import styles from './TodoReactWp.module.scss';
-import { ITodoReactWpProps } from './ITodoReactWpProps';
+import styles from './ReactSessionWp.module.scss';
+import { IReactSessionWpProps } from './IReactSessionWpProps';
 import { escape } from '@microsoft/sp-lodash-subset';
-import { HttpClient, HttpClientResponse } from '@microsoft/sp-http';
-import Form from './Form/Form';
-import TodoList from './List/SessionList';
-import { autobind } from 'office-ui-fabric-react';
-import SessionList from './List/SessionList';
+import { HttpClientResponse, HttpClient } from '@microsoft/sp-http';
 import ISession from '../interfaces/ISession';
+import SessionList from './list/SessionList';
+import { autobind } from 'office-ui-fabric-react';
+import Form from './form/form';
 
-export interface ITodoReactWPState {
+export interface IReactSessionWpState {
   sessionItems?: ISession[];
 }
 
-export default class TodoReactWp extends React.Component<ITodoReactWpProps, ITodoReactWPState> {
-  constructor(props: ITodoReactWpProps) {
+export default class ReactSessionWp extends React.Component<IReactSessionWpProps, IReactSessionWpState> {
+  constructor(props: IReactSessionWpProps) {
     super(props);
     this.state = {
       sessionItems: null
@@ -25,16 +24,16 @@ export default class TodoReactWp extends React.Component<ITodoReactWpProps, ITod
     this._RetrieveItems();
   }
 
-  public render(): React.ReactElement<ITodoReactWpProps> {
+  public render(): React.ReactElement<IReactSessionWpProps> {
     return (
-      <div className={styles.todoReactWp}>
+      <div className={styles.reactSessionWp}>
         <div className="ms-Grid-row">
-          <h1>Session list SPS Doha</h1>
+          <h1>Session list SPS Doha - demo</h1>
         </div>
         <div className="ms-Grid-row">
           <SessionList
             sessionItems={this.state.sessionItems}
-            handleDelete={this._deleteItem}
+            handleDelete={this._DeleteItem}
           />
         </div>
         <div className="ms-Grid-row">
@@ -63,7 +62,7 @@ export default class TodoReactWp extends React.Component<ITodoReactWpProps, ITod
   }
 
   @autobind
-  private _deleteItem(session: ISession) {
+  private _DeleteItem(session: ISession) {
     this.setState(prevState => ({
       sessionItems: prevState.sessionItems.filter(el => el.title != session.title && el.speaker != session.title)
     }));

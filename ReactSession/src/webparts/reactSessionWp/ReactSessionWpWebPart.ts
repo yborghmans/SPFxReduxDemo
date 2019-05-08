@@ -7,19 +7,19 @@ import {
   PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
 
-import * as strings from 'TodoReactWpWebPartStrings';
-import TodoReactWp from './components/TodoReactWp';
-import { ITodoReactWpProps } from './components/ITodoReactWpProps';
+import * as strings from 'ReactSessionWpWebPartStrings';
+import ReactSessionWp from './components/ReactSessionWp';
+import { IReactSessionWpProps } from './components/IReactSessionWpProps';
 
-export interface ITodoReactWpWebPartProps {
+export interface IReactSessionWpWebPartProps {
   description: string;
 }
 
-export default class TodoReactWpWebPart extends BaseClientSideWebPart<ITodoReactWpWebPartProps> {
+export default class ReactSessionWpWebPart extends BaseClientSideWebPart<IReactSessionWpWebPartProps> {
 
   public render(): void {
-    const element: React.ReactElement<ITodoReactWpProps > = React.createElement(
-      TodoReactWp,
+    const element: React.ReactElement<IReactSessionWpProps > = React.createElement(
+      ReactSessionWp,
       {
         description: this.properties.description,
         httpClient:this.context.httpClient

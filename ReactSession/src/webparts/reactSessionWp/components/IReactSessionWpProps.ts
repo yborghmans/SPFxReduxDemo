@@ -1,6 +1,6 @@
 import { HttpClient } from "@microsoft/sp-http";
 
-export interface ITodoReactWpProps {
+export interface IReactSessionWpProps {
   description: string;
   httpClient:HttpClient;
 }

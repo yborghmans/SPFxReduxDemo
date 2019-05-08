@@ -7,19 +7,20 @@ import {
   PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
 
-import * as strings from 'TodoReactWpWebPartStrings';
-import TodoReactWp from './components/TodoReactWp';
-import { ITodoReactWpProps } from './components/ITodoReactWpProps';
+import * as strings from 'ReduxSessionWpWebPartStrings';
+import ReduxSessionWp from './components/ReduxSessionWp';
+import { IReduxSessionWpProps } from './components/IReduxSessionWpProps';
+import configureStore from './store/configureStore';
 
-export interface ITodoReactWpWebPartProps {
+export interface IReduxSessionWpWebPartProps {
   description: string;
 }
 
-export default class TodoReactWpWebPart extends BaseClientSideWebPart<ITodoReactWpWebPartProps> {
+export default class ReduxSessionWpWebPart extends BaseClientSideWebPart<IReduxSessionWpWebPartProps> {
 
   public render(): void {
-    const element: React.ReactElement<ITodoReactWpProps > = React.createElement(
-      TodoReactWp,
+    const element: React.ReactElement<IReduxSessionWpProps > = React.createElement(
+      ReduxSessionWp,
       {
         description: this.properties.description,
         httpClient:this.context.httpClient
